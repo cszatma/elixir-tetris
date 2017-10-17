@@ -1,4 +1,4 @@
-# Basic Elixir Tetris Game - CPS506 Assingnment 2
+# Elixir Tetris Game - CPS506 Assingnment 2
 
 **TODO: Add description**
 
@@ -12,4 +12,4 @@ dice 1 1
 moves ll"))
 ```
 
-
+### Crafted with :heart: by [Chris Bishop](http://www.chrisbishop.ca) & [Chris Szatmary](http://christopherszatmary.com/)
