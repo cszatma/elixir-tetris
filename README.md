@@ -1,4 +1,4 @@
-# Assign2
+# Basic Elixir Tetris Game - CPS506 Assingnment 2
 
 **TODO: Add description**
 
