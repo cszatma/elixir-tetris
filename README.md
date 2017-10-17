@@ -2,18 +2,14 @@
 
 **TODO: Add description**
 
-## Installation
+## Usage
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `assign2` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [{:assign2, "~> 0.1.0"}]
-end
+```bash
+$ iex -S mix
+Interactive Elixir (1.4.1) - press Ctrl+C to exit (type h() ENTER for help)
+iex(1)> Assign2.print(Assign2.readFrom("board 4 4
+dice 1 1
+moves ll"))
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/assign2](https://hexdocs.pm/assign2).
 
