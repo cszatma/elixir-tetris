@@ -1,7 +1,7 @@
 defmodule Assign2 do
 
-  def print([board, dice, moves]) do
-    board <> dice <> moves
+  def print(input) do
+    input
     |> IO.puts
     
     # Run Moves
@@ -11,17 +11,18 @@ defmodule Assign2 do
 
 
   
-  def readFrom(_) do
-    input = ["Board", "Dice", "Moves"]
-    input
+  def readFrom(input) do
+    strucs = String.split(input, "\n")
+
+    
     #Transform input for the following feilds: 
     #
     # Set Board
     # Set Dice
     # Set Moves
     # Return a list of [ 2D List for Board, Dice List, Moves List ] 
-    
-
+    board = Enum.at(strucs, 0)
+    board
   end
 
 
