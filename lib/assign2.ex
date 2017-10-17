@@ -3,9 +3,9 @@ defmodule Assign2 do
   def print(input) do
     input
     |> IO.inspect
-    
-    # Run Moves
-    # Print Board
+
+    # Converts Board State to String
+    # Print Resulting String
   
   end 
 
@@ -19,14 +19,13 @@ defmodule Assign2 do
 
   def findCommands([head | tail ], listCmds) do
     cmd = String.split(head, " ")
-     cond do
-      String.downcase(Enum.at(cmd, 0)) == "board" ->
-        listCmds = Map.put_new(listCmds, :board, Board.set(cmd))
-      String.downcase(Enum.at(cmd, 0)) == "dice" ->
-        listCmds = Map.put_new(listCmds, :dice, Dice.set(cmd))
-      String.downcase(Enum.at(cmd, 0)) == "moves" ->
-        listCmds = Map.put_new(listCmds, :moves, Moves.set(cmd))
-     end
+    listCmds = 
+      case String.downcase(Enum.at(cmd, 0)) do
+        "board" -> Map.put_new(listCmds, :board, Board.set(cmd))
+        "dice" -> Map.put_new(listCmds, :dice, Dice.set(cmd))
+        "moves" -> Map.put_new(listCmds, :moves, Moves.set(cmd))
+      end
+  
     findCommands(tail, listCmds)
   end
 
