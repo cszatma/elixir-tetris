@@ -1,13 +1,34 @@
 defmodule Board do
   
   def set([ _ | tail ]) do
-   result = Convert.stringListToInt(tail, [])
-   result 
+    axis = Convert.stringListToInt(tail, [])
+    numCols = Enum.at(axis, 0)
+    numRows = Enum.at(axis, 1)
+    createBoard(numCols, numRows, %{})
   end
 
 
-  def drawBoard(cols, rows, board) do
-    
+  def createBoard(numCols, numRows, board) do
+    createRows(numCols, numRows, board)    
+  end
+
+  def createRows(numCols, numRows, board) when numRows > 0 do
+    row = createCols(%{}, numCols)
+    board = Map.put_new(board, numRows, row)
+    createRows(numCols, numRows - 1, board) 
+  end
+
+  def createRows(_, 0, board) do
+    board
+  end
+
+  def createCols(map, numCols) when numCols > 0 do
+    map = Map.put_new(map, numCols, " ")
+    createCols(map, numCols - 1)
+  end
+
+  def createCols(map, 0) do
+    map
   end
 
 end  
