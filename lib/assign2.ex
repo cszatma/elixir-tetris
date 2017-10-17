@@ -13,7 +13,7 @@ defmodule Assign2 do
   
   def readFrom(input) do
     strucs = String.split(input, "\n")
-    commands = findCommands(strucs, [])
+    commands = findCommands(strucs, %{})
     commands    
   end
 
@@ -21,13 +21,13 @@ defmodule Assign2 do
     cmd = String.split(head, " ")
      cond do
       String.downcase(Enum.at(cmd, 0)) == "board" ->
-        listCmds = listCmds ++ [ Board.set(cmd) ]
+        listCmds = Map.put_new(listCmds, :board, [ Board.set(cmd) ])
       String.downcase(Enum.at(cmd, 0)) == "dice" ->
-        listCmds = listCmds ++ [ Dice.set(cmd) ]
+        listCmds = Map.put_new(listCmds, :dice, [ Dice.set(cmd) ])
       String.downcase(Enum.at(cmd, 0)) == "moves" ->
-        listCmds = listCmds ++ [ Moves.set(cmd) ]
+        listCmds = Map.put_new(listCmds, :moves, [ Moves.set(cmd) ])
      end
-    findCommands(tail, list)
+    findCommands(tail, listCmds)
   end
 
   def findCommands([], listCmds) do
