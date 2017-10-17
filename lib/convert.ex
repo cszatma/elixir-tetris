@@ -8,5 +8,10 @@ defmodule Convert do
   def stringListToInt([], list) do
     list
   end
-  
+
+  def boardToString(board) do
+    board
+  end
+
+
 end

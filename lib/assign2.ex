@@ -2,11 +2,8 @@ defmodule Assign2 do
 
   def print(input) do
     input
+    |> Convert.boardToString
     |> IO.inspect
-
-    # Converts Board State to String
-    # Print Resulting String
-  
   end 
 
 
@@ -14,7 +11,7 @@ defmodule Assign2 do
   def readFrom(input) do
     strucs = String.split(input, "\n")
     commands = findCommands(strucs, %{})
-    commands    
+    commands[:board]    
   end
 
   def findCommands([head | tail ], listCmds) do
