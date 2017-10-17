@@ -1,6 +1,6 @@
-defmodule Board do
+defmodule Dice do
 
    def set([ _ | tail ]) do
     tail
   end
-end  
+end 
