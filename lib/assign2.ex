@@ -1,18 +1,14 @@
 defmodule Assign2 do
-  @moduledoc """
-  Documentation for Assign2.
-  """
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Assign2.hello
-      :world
-
-  """
-  def hello do
-    :world
+  def print(_) do
+    "Testing works" 
+    |> IO.puts
+  end 
+  
+  def readFrom(_) do
+  "Base String"
   end
+
+
+
 end
