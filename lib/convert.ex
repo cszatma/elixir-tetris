@@ -53,5 +53,41 @@ defmodule Convert do
   def colsToString(_, line) do
   "+" <> line <> "+"
   end
+  
+  # Converts a map to a list
+  def mapMatrixToListMatrix(mapMatrix) do
+    Map.values(mapMatrix)
+    |> Enum.map(&Map.values(&1))
+  end
+  
+  # Converts a list to a map
+  def listMatrixToMapMatrix(listMatrix) do
+    vectorsToMap(%{}, listMatrix, 1)
+  end
+  
+  # Converts a given 1d list (vector) to a map and adds
+  # it to a given map with the given index as the key
+  def addVectorToMap(map, vector, index) do
+    mapVector = (
+      1..length(vector)
+      |> Enum.zip(vector)
+      |> Enum.into(%{})
+    )
+    Map.put(map, index, mapVector)
+  end
+
+  # Recursive function that loops through a 2d list and
+  # converts each sub list to a map, then appends it to
+  # the given map with the given index as the key
+  defp vectorsToMap(map, list, index) when index <= length(list) do
+    newMap = addVectorToMap(map, Enum.at(list, index - 1), index)
+    vectorsToMap(newMap, list, index + 1)
+  end
+
+  # Base case for the recursive call
+  # Returns the map once list has been fully iterated
+  defp vectorsToMap(map, _, _) do
+    map
+  end
 
 end
