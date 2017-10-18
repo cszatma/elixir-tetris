@@ -31,4 +31,23 @@ defmodule Board do
     map
   end
 
+  def getNumCols(board) do
+   board
+    |> Map.to_list 
+    |> List.last
+    |> Tuple.to_list
+    |> Enum.at(1)
+    |> Map.to_list
+    |> List.last
+    |> Tuple.to_list
+    |> Enum.at(0)
+  end
+
+  def getNumRows(board) do
+   board
+    |> Map.to_list 
+    |> List.last
+    |> Tuple.to_list
+    |> Enum.at(0)
+  end
 end  

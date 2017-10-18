@@ -3,7 +3,7 @@ defmodule Assign2 do
   def print(input) do
     input
     |> Convert.boardToString
-    |> IO.inspect
+    |> IO.puts
   end 
 
 
