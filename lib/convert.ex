@@ -29,8 +29,10 @@ defmodule Convert do
     rowsToString(board, numRows - 1, numCols, result) 
   end
 
-  def rowsToString(_, 0, _, result) do
-    result
+  def rowsToString(board, 0, _, result) do
+    totalCols = Board.getNumCols(board)
+    lastLine = colsToString(totalCols, "")
+    result <> lastLine
   end
 
 
@@ -41,6 +43,15 @@ defmodule Convert do
 
   def colsToString(_, _, _, _, line) do
     "|" <> line <> "|"
+  end
+
+  def colsToString(currentCol, line) when currentCol > 0 do
+    line = line <> "-"
+    colsToString(currentCol - 1, line)
+  end
+
+  def colsToString(_, line) do
+  "+" <> line <> "+"
   end
 
 end
