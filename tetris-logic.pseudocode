@@ -1,0 +1,98 @@
+Tetrimino Module
+
+flip ys (up+, right+)
+
+func typeOne -> matrix, xPos, yPos
+x: 0 1  0  1
+y: 0 0 -1 -1
+
+func typeTwo
+x: -1  0 0 1
+y: -1 -1 0 0
+
+func typeThree
+x: -1 0  0  1
+y:  0 0 -1 -1
+
+func typeFour
+x: -1 -1 0 1
+y: -1  0 0 0
+
+func typeFive
+x: -1 0 1  1
+y:  0 0 0 -1
+
+func typeSix
+x: -1 0 1  0
+y:  0 0 0 -1
+
+func typeSeven
+x: -1 0 1 2
+y:  0 0 0 0
+
+leftRotationMatrix
+x: 0  1
+y: -1 0
+
+rightRotationMatrix
+x: 0 -1
+y: 1  0
+
+make sure it is not performed on Square tetrimino
+func rotateTetrimino(tetriminoMatrix, rotationMatrix) -> rotatedTetrimino {
+    rotationMatrix * tetriminoMatrix
+}
+
+func getPositionOnBoard(tetriminoMatrix, xPos, yPos) -> matrix {
+    x1 + xPos, x2 + xPos, x3 + xPos, x4 + xPos
+    y1 + yPos, y2 + yPos, y3 + yPos, y4 + yPos
+}
+
+End Tetrimino Module
+
+Implement matrix multiplication
+
+Game Module
+
+func performMove(board, move, tetrimino, pos) -> board, tetrimino, pos {
+    check move cases
+    if .  { do nothing, just return original stuff }
+    else {
+        performShift() || performRotation() || performDrop()
+    }
+}
+
+func performShift(board, shiftDirection, tetrimino, pos) -> board, tetrimino, pos {
+    updatedPos = xPos + shiftDirection
+
+    check if new position overlaps with anything on the board
+    if true {
+        return originalTetrimino, originalBoard, originalPos
+    } else {
+        return shiftedTetrimino, updatedBoard, updatedPos
+    }
+}
+
+func performRotation(board, rotationDirection, tetrimino, pos) -> board, tetrimino, pos {
+    rotatedTetrimino = rotateTetrimino(tetrimino, rotationDirection)
+
+    check if rotation overlaps with anything on the board
+    if true {
+        return originalTetrimino, originalBoard, pos
+    } else {
+        return rotatedTetrimino, updatedBoard, pos
+    }
+}
+
+func performDrop(board, tetrimino, pos) -> board, tetrimino, pos {
+    recursively call performDrop() while isOnBottom() is false
+}
+
+func isOnBottom(board, tetrimino, pos) -> bool {
+    tetriminoPositions are == boardHeight -> true
+    tetriminoYPositions + 1 overlap with anything -> true
+
+    return false
+}
+
+End Game Module
