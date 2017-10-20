@@ -1,6 +1,15 @@
 # Elixir Tetris Game - CPS506 Assingnment 2
 
-**TODO: Add description**
+**
+TODO: 
+- Add description
+- Powerup on Board
+- Create Rotations
+- Create Moves
+- Create Pieces
+- Create Score
+- Create Game Computation
+**
 
 ## Usage
 
