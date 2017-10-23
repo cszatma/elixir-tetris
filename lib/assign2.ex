@@ -11,6 +11,8 @@ defmodule Assign2 do
   def readFrom(input) do
     strucs = String.split(input, "\n")
     commands = findCommands(strucs, %{})
+    IO.inspect(commands)
+    IO.puts("----------GAME BELOW----------") 
     commands[:board]    
   end
 

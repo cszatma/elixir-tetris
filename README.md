@@ -1,14 +1,14 @@
-# Elixir Tetris Game - CPS506 Assingnment 2
+# Elixir Tetris Game - CPS506 Assignment 2
 
 
 ### TODO: 
-- Add description
-- Powerup on Board
-- Create Rotations
-- Create Moves
-- Create Pieces
-- Create Score
-- Create Game Computation
+- Add description (Bishop)
+- Powerup on Board (Bishop)
+- Create Rotations (Szatmary)
+- Create Moves (Szatmary)
+- Create Pieces (Szatmary)
+- Create Score (Bishop)
+- Create Game Computation Module (Bishop)
 
 ## Usage
 
