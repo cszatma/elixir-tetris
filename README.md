@@ -1,4 +1,4 @@
-# Elixir Tetris Game - CPS506 Assingnment 2
+# Elixir Tetris Game - CPS506 Assignment 2
 
 
 ### TODO: 
