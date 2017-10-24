@@ -1,7 +1,7 @@
 defmodule Assign2 do
 
   def print(input) do
-    input
+    input[:board]
     |> Convert.boardToString
     |> IO.puts
   end 
@@ -11,9 +11,7 @@ defmodule Assign2 do
   def readFrom(input) do
     strucs = String.split(input, "\n")
     commands = findCommands(strucs, %{})
-    IO.inspect(commands)
-    IO.puts("----------GAME BELOW----------") 
-    commands[:board]    
+    commands    
   end
 
   def findCommands([head | tail ], listCmds) do
@@ -32,5 +30,11 @@ defmodule Assign2 do
   def findCommands([], listCmds) do
     listCmds
   end
- 
+
+  def printAllValues(input) do 
+    input
+    |> IO.inspect
+  end
+
+
 end
