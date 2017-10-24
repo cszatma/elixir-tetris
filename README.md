@@ -2,13 +2,12 @@
 
 
 ### TODO: 
-- Add description (Bishop)
-- Powerup on Board (Bishop)
-- Create Rotations (Szatmary)
-- Create Moves (Szatmary)
-- Create Pieces (Szatmary)
-- Create Score (Bishop)
-- Create Game Computation Module (Bishop)
+- Add description
+- Create Rotations
+- Create Moves
+- Create Pieces
+- Create Score
+- Create Game Computation Module
 
 ## Usage
 
