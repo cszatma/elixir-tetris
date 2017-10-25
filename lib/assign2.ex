@@ -11,7 +11,7 @@ defmodule Assign2 do
   def readFrom(input) do
     strucs = String.split(input, "\n")
     commands = findCommands(strucs, %{})
-    commands    
+    Game.compute(commands)    
   end
 
   def findCommands([head | tail ], listCmds) do
