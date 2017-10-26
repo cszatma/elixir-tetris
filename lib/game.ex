@@ -5,7 +5,7 @@ defmodule Game do
   end
 
   def runMoves([nextMove | remainingMoves], [nextRoll | remainingRolls], commands) do
-    piece = Tetrimino.createType(nextRoll, { round(Float.ceil(Board.getNumCols(commands[:board]) / 2)), Board.getNumRows(commands[:board]) })
+    piece = Tetrimino.createType(nextRoll, { round(Float.ceil(Board.getNumCols(commands[:board]) / 2)), Board.getNumRows(commands[:board]) - 1 })
     
     {board, newPiece, status} = TetriminoActions.performMove(commands[:board], piece, nextMove)
     
