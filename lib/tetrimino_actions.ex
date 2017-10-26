@@ -27,13 +27,13 @@ defmodule TetriminoActions do
   # Shifts a tetrimino one block down.
   def shiftDown(board, tetrimino) do
     if onBottom?(board, tetrimino) do
-      {board, tetrimino, :failed}
+      {board, tetrimino, :placed}
     else
       {x, y} = tetrimino.pos
       shiftedTetrimino = %{tetrimino | pos: {x, y - 1}}
 
       if overlaps?(board, shiftedTetrimino) do
-        {board, tetrimino, :failed}
+        {board, tetrimino, :placed}
       else
         {board, shiftedTetrimino, :ok}
       end
@@ -47,7 +47,7 @@ defmodule TetriminoActions do
     if status == :ok do
       performDrop(newBoard, newTetrimino)
     else
-      {newBoard, newTetrimino}
+      {newBoard, newTetrimino, :placed}
     end
   end
 
