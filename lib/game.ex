@@ -12,7 +12,7 @@ defmodule Game do
     #
     #
     #Test below: 
-    "This is the head : " <> head <> " for piece " <> Integer.to_string(piece) |> IO.puts 
+    #"This is the head : " <> head <> " for piece " <> Integer.to_string(piece) |> IO.puts 
     runMoves(piece, tail, commands)
   end
 
@@ -21,10 +21,10 @@ defmodule Game do
   end
 
   def rollDice([head | tail], commands) do
-    IO.puts("Started piece : " <> Integer.to_string(head))
+    # IO.puts("Started piece : " <> Integer.to_string(head))
     runMoves(head, commands[:moves], commands)
-    "=========================================="
-    |> IO.puts
+    #"=========================================="
+    #|> IO.puts
     rollDice(tail, commands)
   end
 
