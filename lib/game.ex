@@ -1,37 +1,60 @@
 defmodule Game do 
 
   def compute(commands) do
+    runMoves(commands[:moves], commands[:dice], commands)
+  end
+
+  def runMoves([nextMove | remainingMoves], [nextRoll | remainingRolls], commands) do
+    piece = Tetrimino.createType(nextRoll, { round(Float.ceil(Board.getNumCols(commands[:board]) / 2)), Board.getNumRows(commands[:board]) })
+    
+    {board, newPiece, status} = TetriminoActions.performMove(commands[:board], piece, nextMove)
+    
+    remainingRolls = remainingRolls ++ [nextRoll]
+    
+    if status == :placed do
+      points = Tetrimino.getPosOnBoard(newPiece)
+      commands = Map.put(commands, :board, placePieceOnBoard(points, newPiece.type, board)) 
+      runMoves(remainingMoves, remainingRolls, commands)
+    else
+      runMoves(remainingMoves, remainingRolls, commands, newPiece)
+    end
+  end
+
+  def runMoves([nextMove | remainingMoves], rolls, commands, piece) do
+    {board, newPiece, status} = TetriminoActions.performMove(commands[:board], piece, nextMove)
+
+    if status == :placed do
+      points = Tetrimino.getPosOnBoard(newPiece)
+      commands = Map.put(commands, :board, placePieceOnBoard(points, newPiece.type, board))
+      runMoves(remainingMoves, rolls, commands)
+    else
+      runMoves(remainingMoves, rolls, commands, newPiece)
+    end
+
+  end
+
+  def runMoves([], _, commands) do
     commands
-    rollDice(commands[:dice], commands)
   end
 
-  def runMoves(piece, [head | tail], commands) do 
-    #takes the head item in list and tests if it is possible
-    #runs the  move does put_in board for commands[:board] the new values
-    #then recusivle calls runMoves(tail, commands)
-    #
-    #
-    #Test below: 
-    #"This is the head : " <> head <> " for piece " <> Integer.to_string(piece) |> IO.puts 
-    runMoves(piece, tail, commands)
+  def runMoves([], _, commands, piece) do
+    points = Tetrimino.getPosOnBoard(piece)
+    Map.put(commands, :board, placePieceOnBoard(points, piece.type, commands[:board]))
   end
 
-  def runMoves(piece, [], commands) do 
-    commands 
+  def placePieceOnBoard([block | remainingBlock], type, board) do
+    x = List.first(block)
+    y = List.last(block)
+    IO.puts("x = #{x} and y = #{y}")
+    IO.inspect(board)
+    board = put_in board[y][x], type
+    placePieceOnBoard(remainingBlock, type, board)
   end
 
-  def rollDice([head | tail], commands) do
-    # IO.puts("Started piece : " <> Integer.to_string(head))
-    runMoves(head, commands[:moves], commands)
-    #"=========================================="
-    #|> IO.puts
-    rollDice(tail, commands)
-  end
 
-  def rollDice([], commands) do
-    commands
+  def placePieceOnBoard([], _, board) do
+    board
   end
-
 
 
 end
