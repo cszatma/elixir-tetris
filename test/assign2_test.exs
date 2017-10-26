@@ -33,7 +33,7 @@ powerup 2 2")
   test "Powerup Values" do
     commands = Assign2.readFrom("board 4 4
 dice 1 2 3
-moves lLrR
+moves l
 powerup 2 2")
     assert commands[:powerup] == [2, 2]
   end
@@ -41,13 +41,25 @@ powerup 2 2")
   test "Powerup location" do
     commands = Assign2.readFrom("board 4 4
 dice 1 2 3
-moves lLrR
+moves l
 powerup 2 2")
     board = commands[:board]
     assert board[2][2] == "x"
   end
 
   test "Full Game Test" do
+    commands = Assign2.readFrom("board 4 4
+dice 1 1
+moves ll
+powerup 1 2")
+    board = Convert.boardToString(commands[:board], commands[:score])
     
+    result = "|yy  | 1 Pieces
+|yy  |
+|x   |
+|    |
++----+"
+    
+    assert board == result
   end 
 end

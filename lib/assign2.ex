@@ -2,7 +2,7 @@ defmodule Assign2 do
 
   def print(input) do
     input[:board]
-    |> Convert.boardToString
+    |> Convert.boardToString(input[:score])
     |> IO.puts
   end 
 

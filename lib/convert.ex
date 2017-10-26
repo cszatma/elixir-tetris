@@ -9,16 +9,16 @@ defmodule Convert do
     list
   end
 
-  def boardToString(board) do
+  def boardToString(board, score) do
     numRows = Board.getNumRows(board)
     numCols = Board.getNumCols(board)
-    rowsToString(board, numRows, numCols, "", numRows)
+    rowsToString(board, numRows, numCols, "", numRows, score)
   end
 
 
-  def rowsToString(board, numRows, numCols, _, _) do
+  def rowsToString(board, numRows, numCols, _, _, score) do
     newLine = colsToString(board, numRows, 1, numCols, "")
-    result = newLine <> " This is the top row!\n"
+    result = newLine <> " #{score} Pieces\n"
     rowsToString(board, numRows - 1, numCols, result)
   end
 
