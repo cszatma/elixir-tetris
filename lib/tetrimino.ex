@@ -23,27 +23,27 @@ defmodule Tetrimino do
   end
 
   def typeOne(pos) do
-    %Tetrimino{matrix: [[0, 0], [1, 0], [0, 1], [1, 1]], pos: pos, type: "y"}
+    %Tetrimino{matrix: [[0, 0], [1, 0], [0, -1], [1, -1]], pos: pos, type: "y"}
   end
 
   def typeTwo(pos) do
-    %Tetrimino{matrix: [[-1, 1], [0, 1], [0, 0], [1, 0]], pos: pos, type: "r"}
+    %Tetrimino{matrix: [[-1, -1], [0, -1], [0, 0], [1, 0]], pos: pos, type: "r"}
   end
 
   def typeThree(pos) do
-    %Tetrimino{matrix: [[-1, 0], [0, 0], [0, 1], [1, 1]], pos: pos, type: "g"}
+    %Tetrimino{matrix: [[-1, 0], [0, 0], [0, -1], [1, -1]], pos: pos, type: "g"}
   end
 
   def typeFour(pos) do
-    %Tetrimino{matrix: [[-1, 1], [-1, 0], [0, 0], [1, 0]], pos: pos, type: "b"}
+    %Tetrimino{matrix: [[-1, -1], [-1, 0], [0, 0], [1, 0]], pos: pos, type: "b"}
   end
 
   def typeFive(pos) do
-    %Tetrimino{matrix: [[-1, 0], [0, 0], [1, 0], [1, 1]], pos: pos, type: "o"}
+    %Tetrimino{matrix: [[-1, 0], [0, 0], [1, 0], [1, -1]], pos: pos, type: "o"}
   end
 
   def typeSix(pos) do
-    %Tetrimino{matrix: [[-1, 0], [0, 0], [1, 0], [0, 1]], pos: pos, type: "p"}
+    %Tetrimino{matrix: [[-1, 0], [0, 0], [1, 0], [0, -1]], pos: pos, type: "p"}
   end
 
   def typeSeven(pos) do
@@ -58,8 +58,9 @@ defmodule Tetrimino do
     [[0, -1], [1, 0]]
   end
 
-  def rotate(tetriminoMatrix, rotMatrix) do
-    Matrix.multiply(rotMatrix, tetriminoMatrix)
+  def rotate(tetrimino, rotMatrix) do
+    rotatedMatrix = Matrix.multiply(rotMatrix, tetrimino.matrix)
+    %{tetrimino | matrix: rotatedMatrix}
   end
 
   # Returns a matrix containing the position of each part of the tetrimino on the board

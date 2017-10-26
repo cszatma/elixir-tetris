@@ -55,13 +55,13 @@ defmodule Board do
   # Positions in a 2D list where each sublist represents a point with a x and y coordinate
   def valuesAtPositions(board, positions) do
     Enum.map(positions, fn([x, y]) ->
-      board[x][y]
+      board[y][x]
     end)
   end
 
   # Check if a value other than a space is present at any of the given positions on a board
   def blockAtPositions?(board, positions) do
     valuesAtPositions(board, positions)
-    |> Enum.any?(&(&1 != " "))
+    |> Enum.any?(&(&1 != " " && &1 != "x"))
   end
 end  
