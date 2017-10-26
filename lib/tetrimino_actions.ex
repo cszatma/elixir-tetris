@@ -30,7 +30,7 @@ defmodule TetriminoActions do
       {board, tetrimino, :failed}
     else
       {x, y} = tetrimino.pos
-      shiftedTetrimino = %{tetrimino | pos: {x, y + 1}}
+      shiftedTetrimino = %{tetrimino | pos: {x, y - 1}}
 
       if overlaps?(board, shiftedTetrimino) do
         {board, tetrimino, :failed}
@@ -53,9 +53,8 @@ defmodule TetriminoActions do
 
   # Checks if the current tetrimino is at the bottom of the board, or on top of another piece.
   def onBottom?(board, tetrimino) do
-    bottomRow = Board.getNumRows(board)
     Tetrimino.getYValues(tetrimino)
-    |> Enum.member?(bottomRow)
+    |> Enum.member?(1)
   end
 
   # Rotates a tetrimino in the given direction.
