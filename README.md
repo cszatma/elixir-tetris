@@ -1,14 +1,5 @@
 # Elixir Tetris Game - CPS506 Assignment 2
 
-
-### TODO: 
-- Add description
-- Create Rotations
-- Create Moves
-- Create Pieces
-- Create Score
-- Create Game Computation Module
-
 ## Usage
 
 ```bash
