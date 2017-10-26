@@ -1,8 +1,7 @@
 defmodule Dice do
 
    def set([ _ | tail ]) do
-    result = Convert.stringListToInt(tail, []) 
-    result
+    Convert.stringListToInt(tail, []) 
    end
 
 end 

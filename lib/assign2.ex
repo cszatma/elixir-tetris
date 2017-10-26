@@ -21,7 +21,7 @@ defmodule Assign2 do
         "board" -> Map.put_new(listCmds, :board, Board.set(cmd))
         "dice" -> Map.put_new(listCmds, :dice, Dice.set(cmd))
         "moves" -> Map.put_new(listCmds, :moves, Moves.set(cmd))
-        "powerup" -> Map.put(listCmds, :board, PowerUp.set(cmd, listCmds[:board])) 
+        "powerup" -> PowerUp.set(cmd, listCmds) 
       end
   
     findCommands(tail, listCmds)
