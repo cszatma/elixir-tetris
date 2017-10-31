@@ -1,6 +1,6 @@
 Tetrimino Module
 
-flip ys (up+, right+)
+frame of reference (up+, right+)
 
 func typeOne -> matrix, xPos, yPos
 x: 0 1  0  1
